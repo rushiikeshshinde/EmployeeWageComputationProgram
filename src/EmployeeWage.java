@@ -4,6 +4,7 @@ public class EmployeeWage {
     public static final int IS_FULL_TIME = 2;
     public static final int EMP_RATE_PER_HOUR = 20;
     public static final int NUM_OF_WORKING_DAYS = 2;
+    public static final int MAX_HRS_IN_MONTH = 10;
 
     public static void main(String[] args) {
 
@@ -11,11 +12,12 @@ public class EmployeeWage {
         System.out.println("Welcome to Employee Wage Computation Program");
 
         // Declaration
-        int empHrs,empWage,totalEmpWage=0;
+        int empHrs,totalEmpHrs=0,totalWorkingDays=0;
 
         // Computation
-        for(int day = 0; day < NUM_OF_WORKING_DAYS; day++) {
+        while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
 
+            totalWorkingDays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
             // Condition using switch-case
@@ -31,11 +33,11 @@ public class EmployeeWage {
             }
 
             // Calculated Employee Wage
-            empWage = empHrs * EMP_RATE_PER_HOUR;
-            totalEmpWage += empWage;
-            System.out.println("Employee wage: " + empWage);
+            totalEmpHrs += empHrs;
+            System.out.println("Day#: " + totalWorkingDays + " Emp Hr: " +empHrs);
 
         }
+        int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
         System.out.println("Total Emp Wage: "+totalEmpWage);
 
     }
